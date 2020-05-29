@@ -30,9 +30,16 @@ public class RepositoryApplication implements CommandLineRunner{
 		p2.setCatagory("Snacks");
 		p2.setPrice(20.0);
 
+		Product p3 = new Product();
+                p3.setName("Sause");
+                p3.setCatagory("S");
+                p3.setPrice(20.0);
+
 		productRepository.save(p);
 
 		productRepository.save(p2);
+		
+		productRepository.save(p3);
 
 	}
 }
