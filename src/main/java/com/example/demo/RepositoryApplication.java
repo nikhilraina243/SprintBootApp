@@ -7,9 +7,17 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.example.demo.dao.ProductRepository;
 
-@SpringBootApplication
-public class RepositoryApplication implements CommandLineRunner{
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
+@SpringBootApplication
+public class RepositoryApplication extends SpringBootServletInitializer implements CommandLineRunner{
+
+    @Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(RepositoryApplication.class);
+	}
+  
 	@Autowired
 	ProductRepository productRepository;
 
@@ -29,11 +37,11 @@ public class RepositoryApplication implements CommandLineRunner{
 		p2.setName("Chips");
 		p2.setCatagory("Snacks");
 		p2.setPrice(20.0);
-
+		
 		Product p3 = new Product();
-                p3.setName("Sause");
-                p3.setCatagory("S");
-                p3.setPrice(20.0);
+		p3.setName("Sause");
+		p3.setCatagory("Snacks");
+		p3.setPrice(10.0);
 
 		productRepository.save(p);
 
